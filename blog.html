@@ -56,282 +56,78 @@
             <p>Expert perspectives on building AI-optimized enterprise architecture with metadata-driven development</p>
         </div>
         
-        <!-- Blog Articles -->
+        <!-- Blog Articles Index -->
         <section class="section">
-            <!-- Article 1: LinkedIn Short Version -->
-            <article class="content-card" style="margin-bottom: 4rem;">
+            <div style="margin-bottom: 2rem;">
+                <p style="color: var(--gray); text-align: center;">Latest insights on AI development at enterprise scale and metadata-driven architecture</p>
+            </div>
+            
+            <!-- Article 1: AI Code Drift Crisis -->
+            <article class="content-card" style="margin-bottom: 2rem;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                    <div>
-                        <h2>The AI Code Drift Crisis: Why Your Enterprise is About to Waste Millions</h2>
-                        <p style="color: var(--gray); margin: 0.5rem 0;"><em>A 5-minute read for CTOs and Engineering Leaders</em></p>
+                    <div style="flex: 1;">
+                        <h2 style="margin-bottom: 0.5rem;">
+                            <a href="ai-code-drift-crisis.html" style="text-decoration: none; color: var(--dark);">The AI Code Drift Crisis: Why Your Enterprise is About to Waste Millions</a>
+                        </h2>
+                        <p style="color: var(--gray); margin: 0.5rem 0; font-size: 0.9rem;">September 14, 2024 • 5 min read</p>
                     </div>
                     <span style="background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">FEATURED</span>
                 </div>
                 
-                <div style="border-left: 4px solid var(--primary); padding-left: 1.5rem; margin-bottom: 2rem;">
-                    <p><strong>Here's a $3M mistake I just watched happen:</strong></p>
-                    <p>A Fortune 500 company embraced AI development. GitHub Copilot, Claude Code, the works. Productivity soared 5x. For three months.</p>
-                    <p>Then they discovered their AI had created 47 different versions of "Customer" across their services. The CTO's quote: <em>"AI made us develop faster in the wrong direction."</em></p>
-                </div>
+                <p style="color: var(--gray); line-height: 1.6; margin-bottom: 1rem;">
+                    A Fortune 500 company's $3M mistake with AI development. How AI creates 47 different versions of Customer objects and the metadata solution that prevents chaos.
+                </p>
                 
-                <h3>The Pattern Nobody Wants to Admit</h3>
-                <p>Each paradigm fails the same way at enterprise scale:</p>
-                <ol style="margin-left: 2rem; color: var(--gray);">
-                    <li><strong>Initial excitement</strong> - Amazing demos, quick wins</li>
-                    <li><strong>Scale reality</strong> - Integration breaks, consistency fails</li>
-                    <li><strong>Expensive fix</strong> - Consultants, refactoring, standardization</li>
-                    <li><strong>Eventual abandonment</strong> - "Let's just use Java"</li>
-                </ol>
-                
-                <h3>The AI Drift Problem is Exponentially Worse</h3>
-                <p>When you ask AI to generate a customer service in Java, then a React frontend, then Python analytics - you get three different field names for the same concept. This isn't a bug. <strong>It's how AI works.</strong></p>
-                
-                <p>Now multiply by 100 entities × 50 services × 10 developers = <strong>50,000 potential inconsistencies.</strong></p>
-                
-                <h3>The Solution: Metadata-Driven Development</h3>
-                <p>Instead of generating code, generate metadata. This drives consistent generation of Java services, TypeScript frontends, Python analytics, SQL schemas, and REST APIs. <strong>One source of truth. Zero drift.</strong></p>
-                
-                <h3>Why This Matters NOW</h3>
-                <p>AI makes metadata-driven development 10x more powerful:</p>
-                <ul style="margin-left: 2rem; color: var(--gray);">
-                    <li><strong>Without Metadata:</strong> AI generates inconsistent code faster, integration complexity explodes</li>
-                    <li><strong>With Metadata:</strong> AI generates perfect metadata, code is always consistent, governance is automatic</li>
-                </ul>
-                
-                <div style="background: var(--light-gray); padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
-                    <p><strong>The Bottom Line:</strong> We're about to repeat every mistake from MDA and low-code, just 10x faster with AI. Or we can learn from 20 years of history and build systems that actually scale.</p>
-                </div>
-                
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://github.com/Draagon/draagon-metaobjects" class="btn btn-primary" target="_blank">Explore the Solution</a>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="ai-code-drift-crisis.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Read Article</a>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://draagon.github.io/ai-code-drift-crisis.html" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.8rem;">Share on LinkedIn</a>
+                        <a href="https://twitter.com/intent/tweet?url=https://draagon.github.io/ai-code-drift-crisis.html" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.8rem;">Share on Twitter</a>
+                    </div>
                 </div>
             </article>
             
-            <!-- Article 2: Evolution Article -->
-            <article class="content-card" style="margin-bottom: 4rem;">
-                <h2>The Evolution of Enterprise Software Development: From Models to Metadata in the AI Era</h2>
-                <p style="color: var(--gray); margin: 1rem 0;"><em>By Doug Mealing, SVP/CTO with 25+ years in Enterprise Architecture</em></p>
-                
-                <p>After spending the last 25 years building enterprise software systems—from pharmaceutical compliance platforms to educational technology serving millions—I've witnessed the industry repeatedly grapple with the same fundamental challenge: how do we manage complexity at scale while maintaining consistency and agility?</p>
-                
-                <h3>The Rise and Fall of Model-Driven Development</h3>
-                <p>In the early 2000s, Model-Driven Architecture (MDA) was going to revolutionize software development. IBM Rational Rose, Together/J, and other tools sold this vision to enterprises for millions of dollars. I was there. I used these tools. I watched them fail spectacularly.</p>
-                
-                <h4>Why MDA Failed: The Real Story</h4>
-                <ul style="margin-left: 2rem; color: var(--gray);">
-                    <li><strong>Models Were Static Artifacts:</strong> Once you generated code, the model and code immediately diverged</li>
-                    <li><strong>Models Couldn't Handle Runtime Complexity:</strong> Real enterprise systems need runtime adaptation</li>
-                    <li><strong>One-Size-Fits-All Didn't Fit Anyone:</strong> Banking ≠ Healthcare ≠ Manufacturing</li>
-                </ul>
-                
-                <h3>Low-Code's Secret: MDA in Disguise</h3>
-                <p>Here's what most people don't realize: <strong>low-code platforms are just model-driven development with better marketing and proprietary runtimes.</strong></p>
-                
-                <div style="background: var(--light-gray); padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
-                    <h4>OutSystems "Success" Story at Major Bank:</h4>
-                    <ul style="margin-left: 1.5rem; color: var(--gray);">
-                        <li><strong>Year 1:</strong> Rapid development! 10 apps in 6 months!</li>
-                        <li><strong>Year 2:</strong> Need integration with legacy systems... $500K consulting</li>
-                        <li><strong>Year 3:</strong> Need to scale beyond platform limits... not possible</li>
-                        <li><strong>Year 4:</strong> Vendor lock-in realized, $2M annual licenses</li>
-                        <li><strong>Year 5:</strong> Complete rebuild in Java/React begins</li>
-                    </ul>
+            <!-- Article 2: Evolution of Enterprise Software -->
+            <article class="content-card" style="margin-bottom: 2rem;">
+                <div style="margin-bottom: 1rem;">
+                    <h2 style="margin-bottom: 0.5rem;">
+                        <a href="metadata-evolution-enterprise.html" style="text-decoration: none; color: var(--dark);">The Evolution of Enterprise Software Development: From Models to Metadata in the AI Era</a>
+                    </h2>
+                    <p style="color: var(--gray); margin: 0.5rem 0; font-size: 0.9rem;">September 14, 2024 • 8 min read</p>
                 </div>
                 
-                <h3>The AI Revolution: History Repeating with 10x Speed</h3>
-                <p>Now we're in 2024, and AI can generate entire applications from natural language descriptions. The productivity gains are real—I use Claude Code daily and see 3-5x improvements in specific tasks. But at the enterprise level, we're about to hit a wall that will make the MDA and low-code failures look quaint.</p>
+                <p style="color: var(--gray); line-height: 1.6; margin-bottom: 1rem;">
+                    A 25-year perspective on enterprise software evolution. How Model-Driven Architecture failed, why low-code is MDA in disguise, and the future of AI development at scale.
+                </p>
                 
-                <h4>Real Enterprise Example: The Integration Nightmare</h4>
-                <p>I recently consulted for a Fortune 500 company that embraced AI development:</p>
-                <ul style="margin-left: 2rem; color: var(--gray);">
-                    <li><strong>Month 1-3:</strong> "This is amazing!" 5x faster development</li>
-                    <li><strong>Month 4-6:</strong> "We have a problem..." 47 different Customer variations</li>
-                    <li><strong>Month 7-9:</strong> "Stop everything!" $3M standardization effort</li>
-                </ul>
-                
-                <h3>The Solution: Metadata-Driven Development in the AI Era</h3>
-                <p>After 20 years of refining this approach across multiple enterprises, the solution isn't to abandon AI—it's to give AI the structure it needs: <strong>metadata-driven development.</strong></p>
-                
-                <h4>The Critical Difference: Runtime Adaptation</h4>
-                <p>Unlike MDA (compile-time only) or low-code (proprietary runtime), metadata-driven development works with standard languages but adapts at runtime. At Liquent, when the FDA required a new field, support staff added it to metadata. All services immediately supported it. No developer involvement, no deployment, no risk.</p>
-                
-                <h3>Why Metadata + AI is the Future</h3>
-                <p>The combination of metadata-driven development and AI solves both historical problems and emerging challenges:</p>
-                <ul style="margin-left: 2rem; color: var(--gray);">
-                    <li><strong>AI Generates Metadata, Not Code:</strong> Consistent metadata → Perfect code in all languages</li>
-                    <li><strong>Governance Built-In:</strong> Every service automatically implements compliance and security</li>
-                    <li><strong>Enterprise Scale Without Complexity:</strong> 100+ services, 5 languages, 10M users - all consistent</li>
-                </ul>
-                
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="features.html" class="btn btn-primary">See the Technical Details</a>
-                    <a href="https://github.com/Draagon/draagon-metaobjects" class="btn btn-secondary" target="_blank" style="margin-left: 1rem;">Try It Today</a>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="metadata-evolution-enterprise.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Read Article</a>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://draagon.github.io/metadata-evolution-enterprise.html" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.8rem;">Share on LinkedIn</a>
+                        <a href="https://twitter.com/intent/tweet?url=https://draagon.github.io/metadata-evolution-enterprise.html" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.8rem;">Share on Twitter</a>
+                    </div>
                 </div>
             </article>
             
             <!-- Article 3: Technical Deep Dive -->
-            <article class="content-card">
-                <h2>How We Built a Metadata-Driven Architecture That's Survived 20 Years of Technology Change</h2>
-                <p style="color: var(--gray); margin: 1rem 0;"><em>A Technical Deep Dive for Engineers and Architects</em></p>
-                
-                <p>After my recent article on the evolution from model-driven to metadata-driven development generated significant discussion, many CTOs and architects asked for specifics: "How exactly does this work? Show us the code."</p>
-                
-                <h3>The Core Insight: Separate Definition from Implementation</h3>
-                <p>Traditional development mixes business definition with implementation details. This is why every service ends up different - the business definition gets lost in implementation choices.</p>
-                
-                <h4>The Metadata-Driven Approach: Pure Business Definition</h4>
-                <div class="code-block" style="margin: 2rem 0;">
-                    <pre><code>{
-  "object": {
-    "name": "Customer",
-    "type": "entity",
-    "children": [
-      {
-        "field": {
-          "name": "id",
-          "type": "long",
-          "key": "primary"
-        }
-      },
-      {
-        "field": {
-          "name": "email",
-          "type": "string",
-          "validation": ["required", "email"],
-          "constraints": ["unique"]
-        }
-      }
-    ]
-  }
-}</code></pre>
-                </div>
-                <p>This is pure business definition. No Java annotations, no SQL hints, no framework dependencies.</p>
-                
-                <h3>The Magic: Language-Specific Generators</h3>
-                <p>Each language has a generator that transforms metadata into idiomatic code:</p>
-                
-                <h4>Java Generator Output:</h4>
-                <div class="code-block" style="margin: 1rem 0;">
-                    <pre><code>@Entity
-@Table(name = "customers")
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(name = "email", unique = true)
-    @Email
-    @NotNull
-    private String email;
-    
-    // Generated getters, setters, builders
-}</code></pre>
+            <article class="content-card" style="margin-bottom: 2rem;">
+                <div style="margin-bottom: 1rem;">
+                    <h2 style="margin-bottom: 0.5rem;">
+                        <a href="metadata-architecture-deep-dive.html" style="text-decoration: none; color: var(--dark);">Technical Deep Dive: 20 Years of Metadata Architecture</a>
+                    </h2>
+                    <p style="color: var(--gray); margin: 0.5rem 0; font-size: 0.9rem;">September 14, 2024 • 12 min read</p>
                 </div>
                 
-                <h4>TypeScript Generator Output:</h4>
-                <div class="code-block" style="margin: 1rem 0;">
-                    <pre><code>export interface Customer {
-  id: number;
-  email: string;
-}
-
-export const CustomerSchema = z.object({
-  id: z.number(),
-  email: z.string().email().min(1),
-});
-
-export class CustomerValidator {
-  static validate(customer: unknown): Customer {
-    return CustomerSchema.parse(customer);
-  }
-}</code></pre>
-                </div>
+                <p style="color: var(--gray); line-height: 1.6; margin-bottom: 1rem;">
+                    How we built systems that survived 20 years of technology change. Complete with code examples, performance data, and production insights from enterprise systems.
+                </p>
                 
-                <p><strong>All from the same metadata. Perfect consistency.</strong></p>
-                
-                <h3>Runtime Adaptation: The Game Changer</h3>
-                <p>Services don't just use generated code—they can read metadata at runtime:</p>
-                
-                <div class="code-block" style="margin: 2rem 0;">
-                    <pre><code>@Service
-public class CustomerService {
-    private final MetaDataRegistry registry;
-    
-    public void processCustomer(Map&lt;String, Object&gt; customerData) {
-        // Load current metadata - may have changed since deployment
-        MetaObject customerMeta = registry.get("Customer");
-        
-        // Handle fields dynamically
-        for (MetaField field : customerMeta.getFields()) {
-            // New field? No problem - handle automatically
-            if (field.getName().equals("loyaltyTier")) {
-                processLoyaltyTier(customerData.get(field.getName()));
-            }
-        }
-    }
-}</code></pre>
-                </div>
-                
-                <h3>Real Production Example: FDA Compliance at Liquent</h3>
-                <p>The FDA frequently changes requirements for drug submissions. When the FDA required a new field, Liquent's support team added it to metadata. All services immediately supported it. No developer involvement, no deployment, no risk.</p>
-                
-                <p><strong>20 years later, this system still handles new FDA requirements without developer intervention.</strong></p>
-                
-                <h3>The AI Integration: Metadata as the Bridge</h3>
-                <p>Instead of generating code, AI generates metadata:</p>
-                
-                <div class="code-block" style="margin: 2rem 0;">
-                    <pre><code>// Prompt: "Create a customer order system with inventory tracking"
-const metadata = await AI.generateMetadata(prompt);
-
-// AI generates consistent metadata structure
-// Generate everything from that: Java, TypeScript, Python, SQL, APIs</code></pre>
-                </div>
-                
-                <h3>Performance Considerations</h3>
-                <p><strong>Common concern:</strong> "Doesn't runtime metadata interpretation hurt performance?"</p>
-                <p><strong>Reality from production:</strong> The overhead is negligible (0.002ms) and the benefits are massive:</p>
-                <ul style="margin-left: 2rem; color: var(--gray);">
-                    <li>Zero downtime deployments</li>
-                    <li>Instant configuration changes</li>
-                    <li>A/B testing of data structures</li>
-                    <li>Customer-specific adaptations</li>
-                </ul>
-                
-                <h3>Governance: Built-In, Not Bolted-On</h3>
-                <div class="code-block" style="margin: 2rem 0;">
-                    <pre><code>{
-  "field": {
-    "name": "socialSecurityNumber",
-    "type": "string",
-    "compliance": {
-      "pii": "true",
-      "encryption": "required",
-      "audit": "all_operations",
-      "gdpr": "special_category",
-      "retention": "7_years"
-    }
-  }
-}</code></pre>
-                </div>
-                <p>Every service that touches this field automatically applies all compliance rules.</p>
-                
-                <h3>The Call to Action</h3>
-                <p>If you're an engineering leader, ask yourself:</p>
-                <ol style="margin-left: 2rem; color: var(--gray);">
-                    <li>How many different versions of your core entities exist across services?</li>
-                    <li>How long does it take to add a field that all services can use?</li>
-                    <li>What's your plan for AI-generated code consistency?</li>
-                </ol>
-                
-                <div style="background: var(--gradient); padding: 2rem; border-radius: 1rem; text-align: center; color: white; margin: 2rem 0;">
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>The technology exists. It's proven. It's running in production at scale.</strong></p>
-                    <p>The question is: Will you adopt it before your competitors do?</p>
-                </div>
-                
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="docs.html" class="btn btn-primary">Get Started Guide</a>
-                    <a href="https://github.com/Draagon/draagon-metaobjects" class="btn btn-secondary" target="_blank" style="margin-left: 1rem;">View Source Code</a>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="metadata-architecture-deep-dive.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Read Article</a>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://draagon.github.io/metadata-architecture-deep-dive.html" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.8rem;">Share on LinkedIn</a>
+                        <a href="https://twitter.com/intent/tweet?url=https://draagon.github.io/metadata-architecture-deep-dive.html" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.8rem;">Share on Twitter</a>
+                    </div>
                 </div>
             </article>
         </section>
