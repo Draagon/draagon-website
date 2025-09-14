@@ -157,16 +157,27 @@
                 <div class="code-block">
                     <pre><code class="language-java">package com.example;
 
+import org.draagon.metaobjects.*;
 import javax.validation.constraints.*;
 
 public class Product {
+    private final MetaObject metaObject;
     private Long id;
     private String name;
     private Double price;
     private Boolean inStock;
     
-    // Constructors
-    public Product() {}
+    // Constructor requires MetaObject
+    public Product(MetaObject metaObject) {
+        this.metaObject = metaObject;
+    }
+    
+    // Factory method
+    public static Product newInstance() {
+        MetaDataLoader loader = new FileMetaDataLoader();
+        MetaObject productMeta = loader.getMetaObject("Product");
+        return (Product) productMeta.newInstance();
+    }
     
     // Getters and Setters
     public Long getId() { return id; }
@@ -180,10 +191,12 @@ public class Product {
     
     public Boolean getInStock() { return inStock; }
     public void setInStock(Boolean inStock) { this.inStock = inStock; }
+    
+    public MetaObject getMetaObject() { return metaObject; }
 }
 
-// Usage with setters
-Product product = new Product();
+// Usage with factory method
+Product product = Product.newInstance();
 product.setName("Widget");
 product.setPrice(29.99);</code></pre>
                 </div>
@@ -192,7 +205,9 @@ product.setPrice(29.99);</code></pre>
             <div class="example-block">
                 <h4>Generated TypeScript Code</h4>
                 <div class="code-block">
-                    <pre><code class="language-typescript">export interface Product {
+                    <pre><code class="language-typescript">import { MetaObject, MetaDataLoader } from '@draagon/metaobjects';
+
+export interface Product {
   id: number;
   name: string;
   price: number;
@@ -200,15 +215,27 @@ product.setPrice(29.99);</code></pre>
 }
 
 export class ProductImpl implements Product {
+  private readonly metaObject: MetaObject;
   id: number;
   name: string;
   price: number;
   inStock: boolean;
   
-  constructor() {}
+  constructor(metaObject: MetaObject) {
+    this.metaObject = metaObject;
+  }
+  
+  // Factory method
+  static newInstance(): ProductImpl {
+    const loader = new MetaDataLoader();
+    const productMeta = loader.getMetaObject('Product');
+    return productMeta.newInstance() as ProductImpl;
+  }
   
   setName(name: string): void { this.name = name; }
   setPrice(price: number): void { this.price = price; }
+  
+  getMetaObject(): MetaObject { return this.metaObject; }
 }
 
 export const ProductValidator = {
@@ -217,8 +244,8 @@ export const ProductValidator = {
   }
 };
 
-// Usage with setters
-const product = new ProductImpl();
+// Usage with factory method
+const product = ProductImpl.newInstance();
 product.setName("Widget");
 product.setPrice(29.99);</code></pre>
                 </div>
@@ -228,17 +255,32 @@ product.setPrice(29.99);</code></pre>
                 <h4>Generated C# Code</h4>
                 <div class="code-block">
                     <pre><code class="language-csharp">using System.ComponentModel.DataAnnotations;
+using Draagon.MetaObjects;
 
 namespace Com.Example
 {
     public class Product
     {
+        private readonly MetaObject metaObject;
+        
         public long? Id { get; set; }
         public string Name { get; set; }
         public double? Price { get; set; }
         public bool? InStock { get; set; }
         
-        public Product() { }
+        // Constructor requires MetaObject
+        public Product(MetaObject metaObject) 
+        {
+            this.metaObject = metaObject;
+        }
+        
+        // Factory method
+        public static Product NewInstance() 
+        {
+            var loader = new MetaDataLoader();
+            var productMeta = loader.GetMetaObject("Product");
+            return (Product)productMeta.NewInstance();
+        }
         
         // Fluent setters
         public Product SetName(string name) 
@@ -252,11 +294,13 @@ namespace Com.Example
             Price = price; 
             return this; 
         }
+        
+        public MetaObject GetMetaObject() { return metaObject; }
     }
 }
 
-// Usage with setters
-var product = new Product()
+// Usage with factory method
+var product = Product.NewInstance()
     .SetName("Widget")
     .SetPrice(29.99);</code></pre>
                 </div>
