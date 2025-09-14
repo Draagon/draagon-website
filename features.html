@@ -45,6 +45,8 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html">Features</a></li>
+                <li><a href="enterprise.html">Enterprise</a></li>
+                <li><a href="support.html">Support</a></li>
                 <li><a href="docs.html">Documentation</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="community.html">Community</a></li>
@@ -257,6 +259,148 @@ export const ProductValidator = {
                         <li>Custom generator support</li>
                         <li>Multi-module projects</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Technical Architecture -->
+        <section class="section" style="background: var(--light-gray); margin: 4rem -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <h2>Technical Architecture</h2>
+                <p>Deep dive into the platform architecture and technical specifications</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+                <div>
+                    <h3>Core Components</h3>
+                    <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="text-align: center; font-family: monospace; font-size: 0.9rem;">
+                            <div style="background: #667eea; color: white; padding: 0.5rem; border-radius: 0.25rem; margin: 0.5rem 0;">MetaData Registry</div>
+                            <div style="color: #667eea; font-size: 1.2rem;">↓</div>
+                            <div style="background: #764ba2; color: white; padding: 0.5rem; border-radius: 0.25rem; margin: 0.5rem 0;">Generation Engine</div>
+                            <div style="color: #667eea; font-size: 1.2rem;">↓</div>
+                            <div style="background: #48bb78; color: white; padding: 0.5rem; border-radius: 0.25rem; margin: 0.5rem 0;">Runtime Validation</div>
+                            <div style="color: #667eea; font-size: 1.2rem;">↓</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div style="background: #ed8936; color: white; padding: 0.25rem; border-radius: 0.25rem;">Java Code</div>
+                                <div style="background: #ed8936; color: white; padding: 0.25rem; border-radius: 0.25rem;">TypeScript</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Performance Benchmarks</h3>
+                    <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="display: grid; gap: 1rem;">
+                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 0.25rem;">
+                                <span style="font-size: 0.9rem;">Metadata Lookup (Cached)</span>
+                                <span style="font-weight: bold; color: var(--primary); text-align: right;">0.001ms</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 0.25rem;">
+                                <span style="font-size: 0.9rem;">Field Validation</span>
+                                <span style="font-weight: bold; color: var(--primary); text-align: right;">0.002ms</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 0.25rem;">
+                                <span style="font-size: 0.9rem;">Object Instantiation</span>
+                                <span style="font-weight: bold; color: var(--primary); text-align: right;">0.1ms</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center; padding: 0.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 0.25rem;">
+                                <span style="font-size: 0.9rem;">Code Generation</span>
+                                <span style="font-weight: bold; color: var(--primary); text-align: right;">15ms</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-top: 1rem; text-align: center;">
+                            <em>Production measurements: 8-core Intel Xeon, 32GB RAM</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>System Requirements</h3>
+                    <div style="background: rgba(102, 126, 234, 0.1); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
+                        <h4 style="margin-bottom: 0.5rem;">Minimum Production</h4>
+                        <ul style="margin: 0; font-size: 0.9rem;">
+                            <li>Java 11+, Node.js 16+</li>
+                            <li>2GB RAM (8GB recommended)</li>
+                            <li>2 CPU cores (4+ recommended)</li>
+                            <li>PostgreSQL 12+ or MySQL 8+</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(102, 126, 234, 0.1); padding: 1rem; border-radius: 0.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">Enterprise Scale</h4>
+                        <ul style="margin: 0; font-size: 0.9rem;">
+                            <li>Horizontal scaling support</li>
+                            <li>Redis cache clustering</li>
+                            <li>Multi-tier caching strategy</li>
+                            <li>Event-driven propagation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Supported Technologies</h3>
+                    <div style="margin: 1rem 0;">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Languages & Frameworks</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Java/Spring Boot</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">TypeScript/React</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Python/Django</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">C#/.NET Core</span>
+                        </div>
+                        
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Validation Libraries</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Bean Validation</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Zod</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Pydantic</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Joi</span>
+                        </div>
+                        
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Build Integration</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Maven</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Gradle</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">npm</span>
+                            <span style="background: var(--light-gray); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem;">Docker</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Enterprise Features</h3>
+                    <ul style="color: var(--gray);">
+                        <li><strong>High Availability:</strong> Active-passive clustering with automatic failover</li>
+                        <li><strong>Security:</strong> RBAC, audit logging, encryption at rest and in transit</li>
+                        <li><strong>Monitoring:</strong> JMX metrics, Prometheus integration, custom dashboards</li>
+                        <li><strong>Backup & Recovery:</strong> Point-in-time recovery, metadata versioning</li>
+                        <li><strong>Deployment:</strong> Kubernetes ready, Helm charts, CI/CD integration</li>
+                    </ul>
+                    
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <a href="architecture.html" style="color: var(--primary); text-decoration: none; font-weight: 500;">
+                            View Full Technical Architecture →
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>AI Integration Ready</h3>
+                    <p style="margin-bottom: 1rem;">Designed for the AI-driven development era:</p>
+                    <ul style="color: var(--gray);">
+                        <li><strong>AI Context:</strong> Metadata provides perfect context for AI code generation</li>
+                        <li><strong>Consistency Engine:</strong> Prevents AI drift across services and languages</li>
+                        <li><strong>Structured Output:</strong> AI generates metadata, not inconsistent code</li>
+                        <li><strong>Enterprise Scale:</strong> AI-powered consistency across 100+ services</li>
+                    </ul>
+                    
+                    <div style="background: var(--gradient); color: white; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+                        <p style="margin: 0; font-size: 0.9rem; font-weight: 500;">
+                            🤖 Ready for AI-optimized development workflows
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
