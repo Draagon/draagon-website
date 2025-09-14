@@ -469,7 +469,7 @@ footer {
 .article-header {
     background: var(--gradient);
     color: white;
-    padding: 8rem 2rem 4rem;
+    padding: 6rem 2rem 2rem;
     margin-top: 4rem;
 }
 
@@ -503,7 +503,34 @@ footer {
 }
 
 article.article-content {
-    padding: 4rem 2rem;
+    padding: 2rem 2rem;
+}
+
+/* Article Lists */
+article.article-content ul,
+article.article-content ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+article.article-content ul li {
+    list-style-type: disc;
+    margin: 0.5rem 0;
+    padding-left: 0.5rem;
+}
+
+article.article-content ol li {
+    list-style-type: decimal;
+    margin: 0.5rem 0;
+    padding-left: 0.5rem;
+}
+
+article.article-content ul ul,
+article.article-content ol ol,
+article.article-content ul ol,
+article.article-content ol ul {
+    margin: 0.25rem 0;
+    padding-left: 1.5rem;
 }
 
 /* Responsive */
@@ -539,7 +566,7 @@ article.article-content {
     }
     
     .article-header {
-        padding: 6rem 1rem 3rem;
+        padding: 5rem 1rem 1.5rem;
     }
     
     .article-header h1 {
