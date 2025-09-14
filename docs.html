@@ -138,8 +138,19 @@
                     <h3>Step 5: Use Generated Code</h3>
                     <p>Import and use the generated classes in your application:</p>
                     <div class="code-block" style="margin-top: 1rem;">
-                        <pre><code class="language-java">// Load metadata
-MetaDataLoader loader = new FileMetaDataLoader();
+                        <pre><code class="language-java">// Load metadata with proper configuration
+FileMetaDataLoader loader = new FileMetaDataLoader(
+    new FileLoaderOptions()
+        .addParser("*.json", JsonMetaDataParser.class)
+        .addSources(new LocalFileMetaDataSources(
+            Arrays.asList(
+                "com/draagon/meta/loader/xml/metaobjects.types.json",
+                "metadata/users/user.metadata.json"
+            )
+        )),
+    "user-example"
+).init();
+
 MetaObject userMeta = loader.getMetaObject("User");
 
 // Create instance
