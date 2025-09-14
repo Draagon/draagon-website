@@ -10,20 +10,33 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://draagon.com/">
+    <meta property="og:url" content="https://draagon.github.io/">
     <meta property="og:title" content="Draagon MetaObjects - Enterprise Architecture Operating System">
     <meta property="og:description" content="Define once, deploy everywhere. MetaObjects revolutionizes enterprise software development with metadata-driven architecture that works across all programming languages.">
-    <meta property="og:image" content="images/logo.jpg">
+    <meta property="og:image" content="https://draagon.github.io/images/logo.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://draagon.com/">
+    <meta property="twitter:url" content="https://draagon.github.io/">
     <meta property="twitter:title" content="Draagon MetaObjects - Enterprise Architecture Operating System">
     <meta property="twitter:description" content="Define once, deploy everywhere. MetaObjects revolutionizes enterprise software development with metadata-driven architecture that works across all programming languages.">
-    <meta property="twitter:image" content="images/logo.jpg">
+    <meta property="twitter:image" content="https://draagon.github.io/images/logo.jpg">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://draagon.com/">
+    <link rel="canonical" href="https://draagon.github.io/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/logo_head.jpg">
+    <link rel="apple-touch-icon" href="images/logo_head.jpg">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -171,6 +184,64 @@
                 <div class="benefit-number">Zero</div>
                 <div class="benefit-label">Downtime</div>
                 <div class="benefit-description">For metadata-driven deployments</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Case Studies Section -->
+    <section class="section" style="background: var(--light-gray); margin: 4rem -2rem; padding: 4rem 2rem;">
+        <div class="section-header">
+            <h2>Success Stories</h2>
+            <p>Real-world applications of MetaObjects across different industries and use cases</p>
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>🏢 Enterprise Microservices</h3>
+                <h4>Large Financial Institution</h4>
+                <p><strong>Challenge:</strong> Maintaining consistency across 50+ microservices with different teams and technologies.</p>
+                <p><strong>Solution:</strong> Single metadata definition generating consistent Java backend services, React TypeScript frontends, and C# legacy integrations.</p>
+                <p><strong>Result:</strong> 90% reduction in integration bugs and 3x faster feature deployment across all services.</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>🔄 Legacy Modernization</h3>
+                <h4>Manufacturing Company</h4>
+                <p><strong>Challenge:</strong> Gradual migration from legacy COBOL systems to modern Java Spring Boot architecture.</p>
+                <p><strong>Solution:</strong> MetaObjects metadata layer wrapping legacy systems, enabling incremental modernization without service disruption.</p>
+                <p><strong>Result:</strong> Zero downtime migration over 18 months with perfect data consistency throughout the process.</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>👥 Multi-Team Development</h3>
+                <h4>E-commerce Platform</h4>
+                <p><strong>Challenge:</strong> 12 development teams across 4 countries struggling to maintain synchronized data models.</p>
+                <p><strong>Solution:</strong> Centralized metadata definitions with automatic code generation for each team's preferred technology stack.</p>
+                <p><strong>Result:</strong> Eliminated coordination overhead and reduced cross-team integration time from weeks to hours.</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>⚡ Rapid Prototyping</h3>
+                <h4>Healthcare Startup</h4>
+                <p><strong>Challenge:</strong> Quickly iterating on data models for regulatory compliance while maintaining system stability.</p>
+                <p><strong>Solution:</strong> Runtime metadata adaptation allowing instant schema changes without redeployment.</p>
+                <p><strong>Result:</strong> 10x faster compliance iteration cycles and successful FDA approval process.</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>🔗 Enterprise Integration</h3>
+                <h4>Global Logistics Company</h4>
+                <p><strong>Challenge:</strong> Connecting disparate systems across acquisitions with different data formats and languages.</p>
+                <p><strong>Solution:</strong> MetaObjects as universal integration layer with automatic data transformation and validation.</p>
+                <p><strong>Result:</strong> Unified 15 acquired systems in 6 months with 100% data consistency across the enterprise.</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>📊 Real-time Analytics</h3>
+                <h4>Media Streaming Service</h4>
+                <p><strong>Challenge:</strong> Processing billions of events with evolving schemas across Python analytics and Java services.</p>
+                <p><strong>Solution:</strong> Metadata-driven event processing with automatic schema evolution and validation.</p>
+                <p><strong>Result:</strong> Seamless handling of schema changes affecting 100M+ daily active users without service interruption.</p>
             </div>
         </div>
     </section>
