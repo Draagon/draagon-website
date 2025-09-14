@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Draagon MetaObjects</title>
+    <meta name="description" content="Explore the powerful features of MetaObjects: universal metadata architecture, runtime adaptation, intelligent code generation, and enterprise governance.">
+    <meta name="keywords" content="MetaObjects features, metadata architecture, runtime adaptation, code generation, enterprise governance, cross-language validation, metadata overlay">
+    <meta name="author" content="Doug Mealing LLC">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://draagon.com/features.html">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo_head.jpg" alt="Draagon Logo" />
+                Draagon MetaObjects
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="https://github.com/Draagon/draagon-metaobjects" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <div class="page-container">
+        <div class="page-header">
+            <h1>Features</h1>
+            <p>Discover how MetaObjects transforms enterprise software development with metadata-driven architecture</p>
+        </div>
+        
+        <!-- Primary Features -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Primary Features</h2>
+                <p>Core capabilities that make MetaObjects the choice for enterprise architecture</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>🌐 Universal Metadata Architecture</h3>
+                    <h4>Define Once, Deploy Everywhere</h4>
+                    <p>Create a single metadata definition that automatically generates consistent implementations across all programming languages in your stack.</p>
+                    <ul>
+                        <li>Support for Java, C#, TypeScript, Python, Rust</li>
+                        <li>Automatic code generation</li>
+                        <li>Perfect consistency guaranteed</li>
+                        <li>No manual synchronization needed</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>⚡ Runtime System Adaptation</h3>
+                    <h4>Zero Downtime Changes</h4>
+                    <p>Modify your system behavior, add fields, and update business rules without rebuilding or redeploying services.</p>
+                    <ul>
+                        <li>Hot reload of metadata changes</li>
+                        <li>No service interruption</li>
+                        <li>Instant propagation across all services</li>
+                        <li>Production-safe modifications</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>⚙️ Intelligent Code Generation</h3>
+                    <h4>From Metadata to Production Code</h4>
+                    <p>Advanced code generators create production-ready implementations with validation, serialization, and documentation.</p>
+                    <ul>
+                        <li>Maven plugin integration</li>
+                        <li>Multiple generator types (Java, TypeScript, API docs)</li>
+                        <li>Customizable templates</li>
+                        <li>Validation and business logic included</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🔒 Enterprise Governance Built-In</h3>
+                    <h4>Compliance and Security by Design</h4>
+                    <p>Enterprise governance isn't an afterthought - it's built into the core architecture.</p>
+                    <ul>
+                        <li>Automatic audit trails</li>
+                        <li>Role-based access control</li>
+                        <li>PII data protection</li>
+                        <li>Compliance reporting</li>
+                        <li>Security policy enforcement</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>✅ Cross-Language Validation</h3>
+                    <h4>Consistent Validation Everywhere</h4>
+                    <p>Define validation rules once and have them enforced consistently across all services and languages.</p>
+                    <ul>
+                        <li>Field-level validation</li>
+                        <li>Object-level validation</li>
+                        <li>Custom validation rules</li>
+                        <li>Same rules in frontend and backend</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🔄 Metadata Overlay System</h3>
+                    <h4>Extend Without Modifying</h4>
+                    <p>Layer additional metadata for specific contexts without changing base definitions.</p>
+                    <ul>
+                        <li>Database-specific attributes</li>
+                        <li>UI presentation layers</li>
+                        <li>Environment-specific configs</li>
+                        <li>Clean separation of concerns</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Code Examples -->
+        <section class="section" style="background: var(--light-gray); margin: 4rem -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <h2>Code Examples</h2>
+                <p>See how MetaObjects works in practice</p>
+            </div>
+            
+            <div class="example-block">
+                <h4>Metadata Definition</h4>
+                <div class="code-block">
+                    <pre><code class="language-json">{
+  "metadata": {
+    "package": "com.example",
+    "children": [
+      {
+        "object": {
+          "name": "Product",
+          "type": "pojo",
+          "children": [
+            {"field": {"name": "id", "type": "long"}},
+            {"field": {"name": "name", "type": "string"}},
+            {"field": {"name": "price", "type": "double"}},
+            {"field": {"name": "inStock", "type": "boolean"}}
+          ]
+        }
+      }
+    ]
+  }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="example-block">
+                <h4>Generated Java Code</h4>
+                <div class="code-block">
+                    <pre><code class="language-java">// Load metadata
+MetaDataLoader loader = new FileMetaDataLoader();
+MetaObject productMeta = loader.getMetaObject("Product");
+
+// Create instance
+Object product = productMeta.newInstance();
+productMeta.setFieldValue(product, "name", "Widget");
+productMeta.setFieldValue(product, "price", 29.99);
+
+// Validate
+ValidationResult result = productMeta.performValidation(product);</code></pre>
+                </div>
+            </div>
+            
+            <div class="example-block">
+                <h4>Generated TypeScript Code</h4>
+                <div class="code-block">
+                    <pre><code class="language-typescript">export interface Product {
+  id: number;
+  name: string;
+  price: number;
+  inStock: boolean;
+}
+
+export const ProductValidator = {
+  validate(product: Product): ValidationResult {
+    // Auto-generated validation logic
+  }
+};</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Technical Capabilities -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Technical Capabilities</h2>
+                <p>Built for enterprise performance and developer productivity</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Performance Features</h3>
+                    <ul>
+                        <li>Intelligent caching</li>
+                        <li>Lazy loading</li>
+                        <li>Minimal memory footprint</li>
+                        <li>Optimized serialization</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Developer Experience</h3>
+                    <ul>
+                        <li>Clear error messages</li>
+                        <li>Comprehensive logging</li>
+                        <li>IDE integration</li>
+                        <li>Debugging support</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Integration Options</h3>
+                    <ul>
+                        <li>REST API generation</li>
+                        <li>GraphQL schema support</li>
+                        <li>Message queue integration</li>
+                        <li>Database abstraction</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Maven Integration</h3>
+                    <ul>
+                        <li>Full lifecycle integration</li>
+                        <li>Build-time code generation</li>
+                        <li>Custom generator support</li>
+                        <li>Multi-module projects</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Use Case Scenarios -->
+        <section class="section" style="background: var(--light-gray); margin: 4rem -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <h2>Use Case Scenarios</h2>
+                <p>Perfect for modern enterprise architecture challenges</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Microservices Architecture</h3>
+                    <p>Perfect for maintaining consistency across distributed services. Define your data models once and ensure every microservice uses the same structures and validation rules.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Legacy Modernization</h3>
+                    <p>Wrap legacy systems with metadata layer for gradual migration. Incrementally modernize your architecture while maintaining compatibility.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Multi-Team Development</h3>
+                    <p>Keep teams synchronized without constant coordination. When one team updates a data model, all dependent services automatically stay in sync.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Rapid Prototyping</h3>
+                    <p>Quickly iterate on data models and business logic. Change your metadata definition and see the effects across your entire stack instantly.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Enterprise Integration</h3>
+                    <p>Connect disparate systems with consistent data models. Create integration layers that automatically adapt to changes in your core business objects.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>API Development</h3>
+                    <p>Generate consistent DTOs and validation across services. Ensure your REST APIs, GraphQL schemas, and client SDKs all stay perfectly aligned.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Feature Comparison -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Traditional vs MetaObjects</h2>
+                <p>See the difference metadata-driven development makes</p>
+            </div>
+            
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin: 2rem 0;">
+                    <thead>
+                        <tr style="background: var(--light-gray);">
+                            <th style="padding: 1rem; text-align: left; border: 1px solid var(--gray);">Challenge</th>
+                            <th style="padding: 1rem; text-align: left; border: 1px solid var(--gray);">Traditional Approach</th>
+                            <th style="padding: 1rem; text-align: left; border: 1px solid var(--gray);">MetaObjects Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; border: 1px solid var(--gray); font-weight: 600;">Schema changes</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray);">Rebuild & redeploy all services</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray); color: var(--secondary);">Runtime adaptation</td>
+                        </tr>
+                        <tr style="background: var(--light-gray);">
+                            <td style="padding: 1rem; border: 1px solid var(--gray); font-weight: 600;">Cross-language consistency</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray);">Manual synchronization</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray); color: var(--secondary);">Automatic generation</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border: 1px solid var(--gray); font-weight: 600;">Validation rules</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray);">Duplicated across services</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray); color: var(--secondary);">Single definition</td>
+                        </tr>
+                        <tr style="background: var(--light-gray);">
+                            <td style="padding: 1rem; border: 1px solid var(--gray); font-weight: 600;">Documentation</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray);">Manually maintained</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray); color: var(--secondary);">Auto-generated</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border: 1px solid var(--gray); font-weight: 600;">Integration testing</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray);">Complex setup</td>
+                            <td style="padding: 1rem; border: 1px solid var(--gray); color: var(--secondary);">Metadata-driven</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- CTA -->
+        <section class="cta">
+            <h2>Ready to Experience MetaObjects?</h2>
+            <p>Start building with metadata-driven architecture today</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/Draagon/draagon-metaobjects" class="btn btn-primary" target="_blank">Get Started on GitHub</a>
+                <a href="docs.html" class="btn btn-secondary">Read Documentation</a>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/Draagon/draagon-metaobjects" target="_blank">GitHub</a>
+                <a href="https://github.com/Draagon/draagon-metaobjects/blob/main/README.md" target="_blank">Documentation</a>
+                <a href="https://github.com/Draagon/draagon-metaobjects/blob/main/LICENSE" target="_blank">Apache 2.0 License</a>
+                <a href="https://github.com/Draagon/draagon-metaobjects/discussions" target="_blank">Community</a>
+            </div>
+            <p>&copy; 2024 Doug Mealing LLC. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize syntax highlighting
+        hljs.highlightAll();
+    </script>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

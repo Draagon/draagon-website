@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Draagon MetaObjects</title>
+    <meta name="description" content="Complete documentation for MetaObjects: getting started, technical overview, API reference, and best practices for metadata-driven development.">
+    <meta name="keywords" content="MetaObjects documentation, getting started guide, API reference, metadata-driven development, Java framework, Maven plugin">
+    <meta name="author" content="Doug Mealing LLC">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://draagon.com/docs.html">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo_head.jpg" alt="Draagon Logo" />
+                Draagon MetaObjects
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="https://github.com/Draagon/draagon-metaobjects" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <div class="page-container">
+        <div class="page-header">
+            <h1>Documentation</h1>
+            <p>Everything you need to get started with MetaObjects and build metadata-driven applications</p>
+        </div>
+        
+        <!-- Quick Start Guide -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Quick Start Guide</h2>
+                <p>Get up and running with MetaObjects in minutes</p>
+            </div>
+            
+            <div class="content-grid" style="grid-template-columns: 1fr;">
+                <div class="content-card">
+                    <h3>Step 1: Add Dependency</h3>
+                    <p>Add the MetaObjects dependency to your Maven project:</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;com.draagon.metaobjects&lt;/groupId&gt;
+  &lt;artifactId&gt;metaobjects-core&lt;/artifactId&gt;
+  &lt;version&gt;5.1.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Step 2: Define Metadata</h3>
+                    <p>Create a <code>metadata/model.json</code> file with your object definitions:</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-json">{
+  "metadata": {
+    "package": "com.example",
+    "children": [
+      {
+        "object": {
+          "name": "User",
+          "type": "pojo",
+          "children": [
+            {"field": {"name": "id", "type": "long"}},
+            {"field": {"name": "email", "type": "string"}},
+            {"field": {"name": "name", "type": "string"}}
+          ]
+        }
+      }
+    ]
+  }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Step 3: Configure Maven Plugin</h3>
+                    <p>Add the MetaObjects Maven plugin to generate code during build:</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-xml">&lt;plugin&gt;
+  &lt;groupId&gt;com.draagon.metaobjects&lt;/groupId&gt;
+  &lt;artifactId&gt;metaobjects-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;5.1.0&lt;/version&gt;
+  &lt;configuration&gt;
+    &lt;generators&gt;
+      &lt;generator&gt;
+        &lt;className&gt;com.draagon.meta.generator.JavaInterfaceGenerator&lt;/className&gt;
+      &lt;/generator&gt;
+    &lt;/generators&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Step 4: Generate Code</h3>
+                    <p>Run the Maven plugin to generate your code:</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-bash">mvn metaobjects:generate</code></pre>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Step 5: Use Generated Code</h3>
+                    <p>Import and use the generated classes in your application:</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-java">// Load metadata
+MetaDataLoader loader = new FileMetaDataLoader();
+MetaObject userMeta = loader.getMetaObject("User");
+
+// Create instance
+Object user = userMeta.newInstance();
+userMeta.setFieldValue(user, "email", "user@example.com");
+userMeta.setFieldValue(user, "name", "John Doe");
+
+// Validate
+ValidationResult result = userMeta.performValidation(user);
+if (result.isValid()) {
+    System.out.println("User is valid!");
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- System Requirements -->
+        <section class="section" style="background: var(--light-gray); margin: 4rem -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <h2>System Requirements</h2>
+                <p>Technical specifications for MetaObjects</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Runtime Requirements</h3>
+                    <ul>
+                        <li>Java 21 or higher</li>
+                        <li>512MB RAM minimum</li>
+                        <li>100MB disk space</li>
+                        <li>Any JDBC-compatible database (optional)</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Build Requirements</h3>
+                    <ul>
+                        <li>Maven 3.6 or higher</li>
+                        <li>Java Development Kit (JDK) 21+</li>
+                        <li>Git for version control</li>
+                        <li>IDE support (IntelliJ, Eclipse, VS Code)</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Supported Languages</h3>
+                    <ul>
+                        <li>Java (Full support)</li>
+                        <li>TypeScript (Full support)</li>
+                        <li>C# (Generation support)</li>
+                        <li>Python (Generation support)</li>
+                        <li>JavaScript (Generation support)</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Supported Databases</h3>
+                    <ul>
+                        <li>PostgreSQL</li>
+                        <li>MySQL / MariaDB</li>
+                        <li>Oracle Database</li>
+                        <li>Microsoft SQL Server</li>
+                        <li>H2 Database</li>
+                        <li>Any JDBC-compatible database</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Architecture Overview -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Architecture Overview</h2>
+                <p>Understanding the core components of MetaObjects</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Metadata Module</h3>
+                    <p>Core metadata models and types that define the foundation of the system.</p>
+                    <ul>
+                        <li>Core metadata models and types</li>
+                        <li>Base interfaces and abstractions</li>
+                        <li>Exception hierarchy</li>
+                        <li>Data type system</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Maven Plugin Module</h3>
+                    <p>Build-time integration that generates code during your Maven build process.</p>
+                    <ul>
+                        <li>Build-time code generation</li>
+                        <li>Maven lifecycle integration</li>
+                        <li>Generator framework</li>
+                        <li>Configuration management</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Core Module</h3>
+                    <p>Runtime components that power the metadata-driven behavior in your applications.</p>
+                    <ul>
+                        <li>MetaObject implementations</li>
+                        <li>Loader framework</li>
+                        <li>Serialization system</li>
+                        <li>Validation framework</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Object Manager Module</h3>
+                    <p>High-level abstraction layer for data persistence and querying.</p>
+                    <ul>
+                        <li>Persistence abstraction</li>
+                        <li>Query framework</li>
+                        <li>Expression system</li>
+                        <li>Manager integration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- API Reference -->
+        <section class="section" style="background: var(--light-gray); margin: 4rem -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <h2>Core API Reference</h2>
+                <p>Key interfaces and classes you'll work with</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>MetaObject Interface</h3>
+                    <p>The core interface for working with metadata-driven objects.</p>
+                    <ul>
+                        <li><code>newInstance()</code> - Create new objects</li>
+                        <li><code>getFieldValue()</code> - Get field values</li>
+                        <li><code>setFieldValue()</code> - Set field values</li>
+                        <li><code>performValidation()</code> - Validate objects</li>
+                        <li><code>getMetaFields()</code> - Get field metadata</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>MetaDataLoader</h3>
+                    <p>Loads metadata definitions from various sources.</p>
+                    <ul>
+                        <li>Load from JSON/XML files</li>
+                        <li>Runtime metadata updates</li>
+                        <li>Multiple source support</li>
+                        <li>Classpath and file system loading</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Validation Framework</h3>
+                    <p>Comprehensive validation system for data integrity.</p>
+                    <ul>
+                        <li>Field-level validators</li>
+                        <li>Object-level validators</li>
+                        <li>Custom validation rules</li>
+                        <li>Validation chains</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Generator Framework</h3>
+                    <p>Extensible code generation system.</p>
+                    <ul>
+                        <li>Pluggable generators</li>
+                        <li>Custom templates</li>
+                        <li>Multiple output formats</li>
+                        <li>Build integration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Best Practices -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Best Practices</h2>
+                <p>Proven patterns for successful MetaObjects implementations</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Metadata Organization</h3>
+                    <ul>
+                        <li>One package per domain</li>
+                        <li>Logical grouping of objects</li>
+                        <li>Clear naming conventions</li>
+                        <li>Version control metadata</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Development Workflow</h3>
+                    <ul>
+                        <li>Define metadata first</li>
+                        <li>Generate code during build</li>
+                        <li>Validate at runtime</li>
+                        <li>Test with metadata</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Production Deployment</h3>
+                    <ul>
+                        <li>Pre-load metadata at startup</li>
+                        <li>Monitor metadata changes</li>
+                        <li>Use overlay system for environments</li>
+                        <li>Enable caching for performance</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Performance Optimization</h3>
+                    <ul>
+                        <li>Cache metadata definitions</li>
+                        <li>Use lazy loading for large datasets</li>
+                        <li>Optimize serialization settings</li>
+                        <li>Monitor memory usage</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Common Use Cases -->
+        <section class="section" style="background: var(--light-gray); margin: 4rem -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <h2>Common Use Cases</h2>
+                <p>How to apply MetaObjects in different scenarios</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>REST API Development</h3>
+                    <p>Generate consistent DTOs and validation across services. Perfect for microservices architectures where multiple services need to share data models.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-java">@RestController
+public class UserController {
+    
+    @PostMapping("/users")
+    public ResponseEntity&lt;User&gt; createUser(@Valid @RequestBody User user) {
+        // Validation handled automatically by metadata
+        return ResponseEntity.ok(userService.save(user));
+    }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Database Entities</h3>
+                    <p>Generate JPA entities with proper annotations directly from your metadata definitions.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-java">@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false)
+    private String email;
+    
+    // Generated getters and setters
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Frontend Models</h3>
+                    <p>Generate TypeScript interfaces and validators for your frontend applications.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-typescript">// Auto-generated TypeScript interface
+export interface User {
+    id: number;
+    email: string;
+    name: string;
+}
+
+// Auto-generated validation
+export const validateUser = (user: User): ValidationResult => {
+    // Consistent validation rules from metadata
+};</code></pre>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Service Integration</h3>
+                    <p>Ensure consistent data models between services and external systems.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre><code class="language-java">// Service A
+UserDTO user = metaObjectService.convert(userEntity, UserDTO.class);
+
+// Service B - automatically compatible
+UserResponse response = externalService.createUser(user);
+
+// Same metadata ensures compatibility</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Migration Guide -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Migration Path</h2>
+                <p>How to adopt MetaObjects in existing projects</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>From Traditional Development</h3>
+                    <p>Gradual adoption strategy for existing codebases:</p>
+                    <ol style="margin-left: 1.5rem; color: var(--gray);">
+                        <li>Define existing models as metadata</li>
+                        <li>Generate interfaces alongside existing code</li>
+                        <li>Gradually adopt runtime features</li>
+                        <li>Full metadata-driven architecture</li>
+                    </ol>
+                </div>
+                
+                <div class="content-card">
+                    <h3>From Other Frameworks</h3>
+                    <p>Integration strategies for popular frameworks:</p>
+                    <ul>
+                        <li>Import existing schemas (JPA, JSON Schema)</li>
+                        <li>Map to MetaObjects format</li>
+                        <li>Generate compatibility layers</li>
+                        <li>Incremental migration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- External Resources -->
+        <section class="section" style="background: var(--light-gray); margin: 4rem -2rem; padding: 4rem 2rem;">
+            <div class="section-header">
+                <h2>External Resources</h2>
+                <p>Additional documentation and examples</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>📖 GitHub Repository</h3>
+                    <p>Complete source code, examples, and issue tracking</p>
+                    <a href="https://github.com/Draagon/draagon-metaobjects" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">View on GitHub</a>
+                </div>
+                
+                <div class="content-card">
+                    <h3>📝 API Documentation</h3>
+                    <p>Comprehensive JavaDoc documentation for all classes and interfaces</p>
+                    <a href="https://github.com/Draagon/draagon-metaobjects/tree/main/docs" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Browse API Docs</a>
+                </div>
+                
+                <div class="content-card">
+                    <h3>💡 Examples Repository</h3>
+                    <p>Sample projects demonstrating various MetaObjects patterns</p>
+                    <a href="https://github.com/Draagon/draagon-metaobjects/tree/main/examples" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">View Examples</a>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🗣️ Community Support</h3>
+                    <p>Get help from the community and contribute to the project</p>
+                    <a href="community.html" class="btn btn-primary" style="margin-top: 1rem;">Join Community</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/Draagon/draagon-metaobjects" target="_blank">GitHub</a>
+                <a href="https://github.com/Draagon/draagon-metaobjects/blob/main/README.md" target="_blank">Documentation</a>
+                <a href="https://github.com/Draagon/draagon-metaobjects/blob/main/LICENSE" target="_blank">Apache 2.0 License</a>
+                <a href="https://github.com/Draagon/draagon-metaobjects/discussions" target="_blank">Community</a>
+            </div>
+            <p>&copy; 2024 Doug Mealing LLC. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize syntax highlighting
+        hljs.highlightAll();
+    </script>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
