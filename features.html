@@ -155,17 +155,37 @@
             <div class="example-block">
                 <h4>Generated Java Code</h4>
                 <div class="code-block">
-                    <pre><code class="language-java">// Load metadata
-MetaDataLoader loader = new FileMetaDataLoader();
-MetaObject productMeta = loader.getMetaObject("Product");
+                    <pre><code class="language-java">package com.example;
 
-// Create instance
-Object product = productMeta.newInstance();
-productMeta.setFieldValue(product, "name", "Widget");
-productMeta.setFieldValue(product, "price", 29.99);
+import javax.validation.constraints.*;
 
-// Validate
-ValidationResult result = productMeta.performValidation(product);</code></pre>
+public class Product {
+    private Long id;
+    private String name;
+    private Double price;
+    private Boolean inStock;
+    
+    // Constructors
+    public Product() {}
+    
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    
+    public Double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
+    
+    public Boolean getInStock() { return inStock; }
+    public void setInStock(Boolean inStock) { this.inStock = inStock; }
+}
+
+// Usage with setters
+Product product = new Product();
+product.setName("Widget");
+product.setPrice(29.99);</code></pre>
                 </div>
             </div>
             
@@ -179,11 +199,135 @@ ValidationResult result = productMeta.performValidation(product);</code></pre>
   inStock: boolean;
 }
 
+export class ProductImpl implements Product {
+  id: number;
+  name: string;
+  price: number;
+  inStock: boolean;
+  
+  constructor() {}
+  
+  setName(name: string): void { this.name = name; }
+  setPrice(price: number): void { this.price = price; }
+}
+
 export const ProductValidator = {
   validate(product: Product): ValidationResult {
     // Auto-generated validation logic
   }
-};</code></pre>
+};
+
+// Usage with setters
+const product = new ProductImpl();
+product.setName("Widget");
+product.setPrice(29.99);</code></pre>
+                </div>
+            </div>
+            
+            <div class="example-block">
+                <h4>Generated C# Code</h4>
+                <div class="code-block">
+                    <pre><code class="language-csharp">using System.ComponentModel.DataAnnotations;
+
+namespace Com.Example
+{
+    public class Product
+    {
+        public long? Id { get; set; }
+        public string Name { get; set; }
+        public double? Price { get; set; }
+        public bool? InStock { get; set; }
+        
+        public Product() { }
+        
+        // Fluent setters
+        public Product SetName(string name) 
+        { 
+            Name = name; 
+            return this; 
+        }
+        
+        public Product SetPrice(double price) 
+        { 
+            Price = price; 
+            return this; 
+        }
+    }
+}
+
+// Usage with setters
+var product = new Product()
+    .SetName("Widget")
+    .SetPrice(29.99);</code></pre>
+                </div>
+            </div>
+            
+            <div class="example-block">
+                <h4>Manipulation through MetaData</h4>
+                <div class="code-block">
+                    <pre><code class="language-java">// Load metadata
+MetaDataLoader loader = new FileMetaDataLoader();
+MetaObject productMeta = loader.getMetaObject("Product");
+
+// Create instance without generated classes
+Object product = productMeta.newInstance();
+productMeta.setFieldValue(product, "name", "Widget");
+productMeta.setFieldValue(product, "price", 29.99);
+productMeta.setFieldValue(product, "inStock", true);
+
+// Validate using metadata
+ValidationResult result = productMeta.performValidation(product);
+
+// Access any field dynamically
+String name = (String) productMeta.getFieldValue(product, "name");
+Double price = (Double) productMeta.getFieldValue(product, "price");</code></pre>
+                </div>
+            </div>
+            
+            <div class="example-block">
+                <h4>Dynamic Field Extension</h4>
+                <div class="code-block">
+                    <pre><code class="language-json">// product-overlay.json - Add new fields without code changes
+{
+  "metadata": {
+    "package": "com.example",
+    "children": [{
+      "object": {
+        "name": "Product",
+        "overlay": true,
+        "children": [
+          {"field": {"name": "description", "type": "string"}}
+        ]
+      }
+    }]
+  }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="example-block">
+                <h4>Using Extended Fields</h4>
+                <div class="code-block">
+                    <pre><code class="language-java">// Load base metadata + overlay
+MetaDataLoader loader = new FileMetaDataLoader();
+loader.loadOverlay("product-overlay.json");
+MetaObject productMeta = loader.getMetaObject("Product");
+
+// Create Product with original + new fields
+Object product = productMeta.newInstance();
+productMeta.setFieldValue(product, "name", "Advanced Widget");
+productMeta.setFieldValue(product, "price", 49.99);
+
+// Set the new description field dynamically
+productMeta.setFieldValue(product, "description", 
+    "High-quality widget with advanced features");
+
+// Access the new field
+String desc = (String) productMeta.getFieldValue(product, "description");
+System.out.println("Description: " + desc);
+
+// Validate with new field constraints
+ValidationResult result = productMeta.performValidation(product);</code></pre>
                 </div>
             </div>
         </section>
