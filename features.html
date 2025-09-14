@@ -172,11 +172,16 @@ public class Product {
         this.metaObject = metaObject;
     }
     
+    // Static MetaObject reference (loaded once)
+    private static MetaObject PRODUCT_META;
+    
     // Factory method
     public static Product newInstance() {
-        MetaDataLoader loader = new FileMetaDataLoader();
-        MetaObject productMeta = loader.getMetaObject("Product");
-        return (Product) productMeta.newInstance();
+        if (PRODUCT_META == null) {
+            // Initialize once - in real apps this comes from DI/Spring context
+            PRODUCT_META = MetaDataRegistry.getInstance().getMetaObject("Product");
+        }
+        return (Product) PRODUCT_META.newInstance();
     }
     
     // Getters and Setters
@@ -225,11 +230,16 @@ export class ProductImpl implements Product {
     this.metaObject = metaObject;
   }
   
+  // Static MetaObject reference (loaded once)
+  private static productMeta: MetaObject;
+  
   // Factory method
   static newInstance(): ProductImpl {
-    const loader = new MetaDataLoader();
-    const productMeta = loader.getMetaObject('Product');
-    return productMeta.newInstance() as ProductImpl;
+    if (!ProductImpl.productMeta) {
+      // Initialize once - in real apps this comes from DI context
+      ProductImpl.productMeta = MetaDataRegistry.getInstance().getMetaObject('Product');
+    }
+    return ProductImpl.productMeta.newInstance() as ProductImpl;
   }
   
   setName(name: string): void { this.name = name; }
@@ -274,12 +284,18 @@ namespace Com.Example
             this.metaObject = metaObject;
         }
         
+        // Static MetaObject reference (loaded once)
+        private static MetaObject ProductMeta;
+        
         // Factory method
         public static Product NewInstance() 
         {
-            var loader = new MetaDataLoader();
-            var productMeta = loader.GetMetaObject("Product");
-            return (Product)productMeta.NewInstance();
+            if (ProductMeta == null) 
+            {
+                // Initialize once - in real apps this comes from DI container
+                ProductMeta = MetaDataRegistry.Instance.GetMetaObject("Product");
+            }
+            return (Product)ProductMeta.NewInstance();
         }
         
         // Fluent setters
@@ -309,8 +325,19 @@ var product = Product.NewInstance()
             <div class="example-block">
                 <h4>Manipulation through MetaData</h4>
                 <div class="code-block">
-                    <pre><code class="language-java">// Load metadata
-MetaDataLoader loader = new FileMetaDataLoader();
+                    <pre><code class="language-java">// Load metadata with proper configuration
+FileMetaDataLoader loader = new FileMetaDataLoader(
+    new FileLoaderOptions()
+        .addParser("*.json", JsonMetaDataParser.class)
+        .addSources(new LocalFileMetaDataSources(
+            Arrays.asList(
+                "com/draagon/meta/loader/xml/metaobjects.types.json",
+                "metadata/ecommerce/product.metadata.json"
+            )
+        )),
+    "ecommerce-example"
+).init();
+
 MetaObject productMeta = loader.getMetaObject("Product");
 
 // Create instance without generated classes
@@ -331,7 +358,7 @@ Double price = (Double) productMeta.getFieldValue(product, "price");</code></pre
             <div class="example-block">
                 <h4>Dynamic Field Extension</h4>
                 <div class="code-block">
-                    <pre><code class="language-json">// product-overlay.json - Add new fields without code changes
+                    <pre><code class="language-json">// product.overlay.json - Add new fields without code changes
 {
   "metadata": {
     "package": "com.example",
@@ -352,21 +379,34 @@ Double price = (Double) productMeta.getFieldValue(product, "price");</code></pre
             <div class="example-block">
                 <h4>Using Extended Fields</h4>
                 <div class="code-block">
-                    <pre><code class="language-java">// Load base metadata + overlay
-MetaDataLoader loader = new FileMetaDataLoader();
-loader.loadOverlay("product-overlay.json");
+                    <pre><code class="language-java">// Load base metadata + overlay with proper configuration
+FileMetaDataLoader loader = new FileMetaDataLoader(
+    new FileLoaderOptions()
+        .addParser("*.json", JsonMetaDataParser.class)
+        .addSources(new LocalFileMetaDataSources(
+            Arrays.asList(
+                "com/draagon/meta/loader/xml/metaobjects.types.json",
+                "metadata/ecommerce/product.metadata.json",
+                "metadata/ecommerce/product.overlay.json"
+            )
+        )),
+    "ecommerce-with-overlay"
+).init();
+
 MetaObject productMeta = loader.getMetaObject("Product");
 
-// Create Product with original + new fields
-Object product = productMeta.newInstance();
-productMeta.setFieldValue(product, "name", "Advanced Widget");
-productMeta.setFieldValue(product, "price", 49.99);
+// Create Product using MetaObject and cast to generated class
+Product product = (Product) productMeta.newInstance();
 
-// Set the new description field dynamically
+// Use generated setters for standard fields
+product.setName("Advanced Widget");
+product.setPrice(49.99);
+
+// Use metadata manipulation for dynamic overlay fields
 productMeta.setFieldValue(product, "description", 
     "High-quality widget with advanced features");
 
-// Access the new field
+// Access the new field through metadata
 String desc = (String) productMeta.getFieldValue(product, "description");
 System.out.println("Description: " + desc);
 
