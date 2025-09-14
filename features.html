@@ -441,6 +441,7 @@ Double price = (Double) productMeta.getFieldValue(product, "price");</code></pre
             
             <div class="example-block">
                 <h4>Using Extended Fields</h4>
+                <p style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 0.75rem; margin: 1rem 0; border-radius: 4px; color: #856404;"><strong>Note:</strong> This functionality requires generated objects to extend from ValueObject rather than being standard POJOs. The ValueObject base class provides the metadata manipulation capabilities shown below.</p>
                 <div class="code-block">
                     <pre><code class="language-java">// Load base metadata + overlay with proper configuration
 FileMetaDataLoader loader = new FileMetaDataLoader(
