@@ -160,7 +160,7 @@
 import org.draagon.metaobjects.*;
 import javax.validation.constraints.*;
 
-public class Product {
+public class Product implements MetaDataAware {
     private final MetaObject metaObject;
     private Long id;
     private String name;
@@ -203,14 +203,19 @@ public class Product {
 // Usage with factory method
 Product product = Product.newInstance();
 product.setName("Widget");
-product.setPrice(29.99);</code></pre>
+product.setPrice(29.99);
+
+// Access MetaObject through MetaDataAware interface
+MetaDataAware aware = (MetaDataAware) product;
+MetaObject meta = aware.getMetaObject();
+System.out.println("Object type: " + meta.getName());</code></pre>
                 </div>
             </div>
             
             <div class="example-block">
                 <h4>Generated TypeScript Code</h4>
                 <div class="code-block">
-                    <pre><code class="language-typescript">import { MetaObject, MetaDataLoader } from '@draagon/metaobjects';
+                    <pre><code class="language-typescript">import { MetaObject, MetaDataLoader, MetaDataAware } from '@draagon/metaobjects';
 
 export interface Product {
   id: number;
@@ -219,7 +224,7 @@ export interface Product {
   inStock: boolean;
 }
 
-export class ProductImpl implements Product {
+export class ProductImpl implements Product, MetaDataAware {
   private readonly metaObject: MetaObject;
   id: number;
   name: string;
@@ -257,7 +262,12 @@ export const ProductValidator = {
 // Usage with factory method
 const product = ProductImpl.newInstance();
 product.setName("Widget");
-product.setPrice(29.99);</code></pre>
+product.setPrice(29.99);
+
+// Access MetaObject through MetaDataAware interface
+const aware: MetaDataAware = product;
+const meta = aware.getMetaObject();
+console.log(`Object type: ${meta.getName()}`);</code></pre>
                 </div>
             </div>
             
@@ -269,7 +279,7 @@ using Draagon.MetaObjects;
 
 namespace Com.Example
 {
-    public class Product
+    public class Product : IMetaDataAware
     {
         private readonly MetaObject metaObject;
         
@@ -318,7 +328,12 @@ namespace Com.Example
 // Usage with factory method
 var product = Product.NewInstance()
     .SetName("Widget")
-    .SetPrice(29.99);</code></pre>
+    .SetPrice(29.99);
+
+// Access MetaObject through IMetaDataAware interface
+IMetaDataAware aware = product;
+MetaObject meta = aware.GetMetaObject();
+Console.WriteLine($"Object type: {meta.GetName()}");</code></pre>
                 </div>
             </div>
             
@@ -412,6 +427,43 @@ System.out.println("Description: " + desc);
 
 // Validate with new field constraints
 ValidationResult result = productMeta.performValidation(product);</code></pre>
+                </div>
+            </div>
+            
+            <div class="example-block">
+                <h4>Working with MetaDataAware Interface</h4>
+                <div class="code-block">
+                    <pre><code class="language-java">// Generic method that works with any MetaDataAware object
+public void processMetaDataAware(MetaDataAware obj) {
+    MetaObject meta = obj.getMetaObject();
+    System.out.println("Processing object of type: " + meta.getName());
+    
+    // Access fields generically
+    for (MetaField field : meta.getMetaFields()) {
+        Object value = meta.getFieldValue(obj, field.getName());
+        System.out.println("  " + field.getName() + " = " + value);
+    }
+    
+    // Perform validation
+    ValidationResult result = meta.performValidation(obj);
+    if (!result.isValid()) {
+        System.out.println("  Validation errors: " + result.getErrors());
+    }
+}
+
+// Usage with multiple different objects
+Product product = Product.newInstance();
+User user = User.newInstance();  // Another generated class
+Order order = Order.newInstance(); // Yet another generated class
+
+// All can be processed generically through MetaDataAware
+processMetaDataAware(product);
+processMetaDataAware(user);
+processMetaDataAware(order);
+
+// Or in collections
+List&lt;MetaDataAware&gt; objects = Arrays.asList(product, user, order);
+objects.forEach(this::processMetaDataAware);</code></pre>
                 </div>
             </div>
         </section>
